@@ -1,4 +1,4 @@
-import DemoBlazePage from "../models/pages/DemoBlazePage";
+import DemoBlazePage from "../../models/pages/DemoBlazePage";
 import products from "../tests/products";
 
 describe('Demo Blaze Test', () => {

@@ -1,4 +1,4 @@
-import { SRHomePage } from "../models/pages/SRHomePage";
+import { SRHomePage } from "../../models/pages/SRHomePage";
 
 describe('SR HomePage Test', ()=>{
     it('should be able to print all the titles', ()=>{

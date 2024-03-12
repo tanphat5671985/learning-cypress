@@ -1,4 +1,4 @@
-import TravelHomePage from '../models/pages/TravelHomePage';
+import TravelHomePage from '../../models/pages/TravelHomePage';
 describe('Travel sign up news letter', ()=>{
     it('should be able to sign up news letter', ()=>{
         const NAME = "tester1";

@@ -1,5 +1,5 @@
-import DemoBlazePage from "../models/pages/DemoBlazePage";
-import { HomePageAPI } from "../support/HomePageAPI";
+import DemoBlazePage from "../../models/pages/DemoBlazePage";
+import { HomePageAPI } from "../../support/HomePageAPI";
 describe('SR Homepage', () => {
 
     let apiProduct
@@ -10,7 +10,7 @@ describe('SR Homepage', () => {
 
     it('should be able to get data from api', () => {
         //cy.log(JSON.stringify(apiProductData))
-        let apiProductData = apiProduct.response.body.Items.map(item => {
+        let apiProductData = apiProduct.map(item => {
             return {
                 itemName: item.title.replace('\n', ''),
                 itemPrice: `$${item.price}`
