@@ -15,4 +15,7 @@ export default class BkgStsTrendingComponent {
     getPreYearBtn = () => cy.get('.ant-picker-header-super-prev-btn');
     //get Status Block Area (4 status)
     getStsBlock = () => cy.get('#rc-tabs-0-panel-booking-status');
+
+    //get a Status Block (8 block).eq(0,1,2,...)
+    getSpecSts = () => cy.get('div[class*="rounded bg-white w-[8.75rem]"]');
 }

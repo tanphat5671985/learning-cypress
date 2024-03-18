@@ -6,7 +6,9 @@ describe ('Testing for Booking Status Trending board', ()=>{
         cy.visit('https://chorus-dev.one-line.com/bkm/booking');
         BkgStsTrending = new BkgStsTrendingComponent();
     });
-    const calculateCurrentTime=() => {
+
+    //func for calculate current time
+    const calculateCurrentTime = () => {
         const today = new Date();
         cy.log(today)
         // calculate Sunday is the first
@@ -19,7 +21,34 @@ describe ('Testing for Booking Status Trending board', ()=>{
         cy.log('Current Time: ' + currentTime);
         return currentTime;
     }
-    
+
+    it('should be able to default value when open page & select a spec card', ()=>{
+        BkgStsTrending.getTitleBkgStsTab().should('have.text','Total Bookings by Booking Status')
+        BkgStsTrending.getSelectWeek().eq(0).should('be.value', calculateCurrentTime())
+        //Select a specific status card
+        BkgStsTrending.getSpecSts().eq(0).click({force: true, waitForAnimations: true});
+        BkgStsTrending.getSpecSts().eq(0).should('have.css', 'border-color');
+        //Selec another spec status card
+        BkgStsTrending.getSpecSts().eq(2).click({force: true, waitForAnimations: true});
+        BkgStsTrending.getSpecSts().eq(2).should('have.css', 'border-color');
+        //Deselect a specific status card
+        BkgStsTrending.getSpecSts().eq(2).click({force: true, waitForAnimations: true});
+        BkgStsTrending.getSpecSts().eq(2).should('not.have.css', 'not.border-color');
+    })
+
+    it('should be able to verify title bkg status block', () => {
+        const statusBkgTitle = [
+          {selector: 'Firm', expectedText: 'Firm'},
+          {selector: 'Advance', expectedText: 'Advance'},
+          {selector: 'Wait', expectedText: 'Wait'},
+          {selector: 'Cancel', expectedText: 'Cancel'}
+        ];
+      
+        statusBkgTitle.forEach(pair => {
+          cy.contains(pair.selector).should('have.text', pair.expectedText);
+        });
+    });
+     
     it('should be able to select a week & verify the status card block',()=>{
         BkgStsTrending.getTitleBkgStsTab().should('have.text','Total Bookings by Booking Status')
         BkgStsTrending.getSelectWeek().eq(0).should('be.value', calculateCurrentTime())
@@ -32,15 +61,11 @@ describe ('Testing for Booking Status Trending board', ()=>{
         BkgStsTrending.getSelectWeek().eq(0).should('be.value', '2023-10-08 ~ 2023-10-14');
         //verify the status card
         BkgStsTrending.getStsBlock().within(()=>{
-            cy.contains('Firm').should('have.text','Firm')
             cy.contains('374').should('have.text','374')
-            cy.contains('Advance').should('have.text','Advance')
             cy.contains('0').should('have.text','0')
-            cy.contains('Wait').should('have.text','Wait')
             cy.contains('562').should('have.text','562')
-            cy.contains('Cancel').should('have.text','Cancel')
             cy.contains('30').should('have.text','30')
-        })
+        }) 
     });
 
     it('should be able to select a day & verify the status card block',()=>{
@@ -57,13 +82,9 @@ describe ('Testing for Booking Status Trending board', ()=>{
         BkgStsTrending.getSelectDate().eq(0).should('be.value', '2023-10-11');
         //verify the status card
         BkgStsTrending.getStsBlock().within(()=>{
-            cy.contains('Firm').should('have.text','Firm')
             cy.contains('92').should('have.text','92')
-            cy.contains('Advance').should('have.text','Advance')
             cy.contains('0').should('have.text','0')
-            cy.contains('Wait').should('have.text','Wait')
             cy.contains('346').should('have.text','346')
-            cy.contains('Cancel').should('have.text','Cancel')
             cy.contains('7').should('have.text','7')
         })
     });
@@ -79,13 +100,9 @@ describe ('Testing for Booking Status Trending board', ()=>{
         BkgStsTrending.getSelectMonth().eq(0).should('be.value', '2023-11');
         //verify the status card
         BkgStsTrending.getStsBlock().within(()=>{
-            cy.contains('Firm').should('have.text','Firm')
             cy.contains('832').should('have.text','832')
-            cy.contains('Advance').should('have.text','Advance')
             cy.contains('12').should('have.text','12')
-            cy.contains('Wait').should('have.text','Wait')
             cy.contains('469').should('have.text','469')
-            cy.contains('Cancel').should('have.text','Cancel')
             cy.contains('25').should('have.text','25')
         })
     });
