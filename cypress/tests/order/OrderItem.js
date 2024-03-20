@@ -50,7 +50,7 @@ const purchaseItem = () =>{
         //input order details
         cy.get('#name').type('tester');
         cy.get('#card').type('1111')
-        cy.contains('Purchase').click();
+        cy.contains('Purchase').click({force: true, waitForAnimations: true});
 
         //verify after purchase to confirm infor
         cy.get('.sweet-alert h2').should('have.text', 'Thank you for your purchase!')

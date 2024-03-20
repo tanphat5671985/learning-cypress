@@ -61,10 +61,10 @@ describe ('Testing for Booking Status Trending board', ()=>{
         BkgStsTrending.getSelectWeek().eq(0).should('be.value', '2023-10-08 ~ 2023-10-14');
         //verify the status card
         BkgStsTrending.getStsBlock().within(()=>{
-            cy.contains('374').should('have.text','374')
-            cy.contains('0').should('have.text','0')
-            cy.contains('562').should('have.text','562')
-            cy.contains('30').should('have.text','30')
+            BkgStsTrending.getSpecSts().eq(0).should('have.text','Firm6374')
+            BkgStsTrending.getSpecSts().eq(1).should('have.text','Advance--0')
+            BkgStsTrending.getSpecSts().eq(2).should('have.text','Wait70562')
+            BkgStsTrending.getSpecSts().eq(3).should('have.text','Cancel630')
         }) 
     });
 
@@ -82,10 +82,10 @@ describe ('Testing for Booking Status Trending board', ()=>{
         BkgStsTrending.getSelectDate().eq(0).should('be.value', '2023-10-11');
         //verify the status card
         BkgStsTrending.getStsBlock().within(()=>{
-            cy.contains('92').should('have.text','92')
-            cy.contains('0').should('have.text','0')
-            cy.contains('346').should('have.text','346')
-            cy.contains('7').should('have.text','7')
+            BkgStsTrending.getSpecSts().eq(0).should('have.text','Firm9292')
+            BkgStsTrending.getSpecSts().eq(1).should('have.text','Advance--0')
+            BkgStsTrending.getSpecSts().eq(2).should('have.text','Wait346346')
+            BkgStsTrending.getSpecSts().eq(3).should('have.text','Cancel57')
         })
     });
 
@@ -100,10 +100,10 @@ describe ('Testing for Booking Status Trending board', ()=>{
         BkgStsTrending.getSelectMonth().eq(0).should('be.value', '2023-11');
         //verify the status card
         BkgStsTrending.getStsBlock().within(()=>{
-            cy.contains('832').should('have.text','832')
-            cy.contains('12').should('have.text','12')
-            cy.contains('469').should('have.text','469')
-            cy.contains('25').should('have.text','25')
+            BkgStsTrending.getSpecSts().eq(0).should('have.text','Firm738832')
+            BkgStsTrending.getSpecSts().eq(1).should('have.text','Advance1212')
+            BkgStsTrending.getSpecSts().eq(2).should('have.text','Wait1542469')
+            BkgStsTrending.getSpecSts().eq(3).should('have.text','Cancel8025')
         })
     });
 });

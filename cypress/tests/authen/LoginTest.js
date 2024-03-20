@@ -10,7 +10,7 @@ describe('Login Test', ()=>{
     let headerComp;
     let loginComp;
     beforeEach(()=>{
-        cy.visit('/');
+        cy.visit('https://www.demoblaze.com/');
         headerComp = new HeaderComponent();
         loginComp = new LoginComponent();
     })
